@@ -98,11 +98,14 @@ importers:
       ts-node:
         specifier: ^10.0.0
         version: 10.0.0(@types/node@16.0.0)(typescript@4.9.4)
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       tsconfig-paths:
         specifier: 4.0.0
         version: 4.0.0
       typescript:
-        specifier: ^4.3.5
+        specifier: ^4.9.4
         version: 4.9.4
 
   apps/web:
