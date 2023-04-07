@@ -1,5 +1,4 @@
 module.exports = {
-  root: true,
   env: { es2021: true, node: true, jest: true },
   extends: [
     'eslint:recommended',
@@ -16,10 +15,5 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: './tsconfig.json',
-    tsconfigRootDir: __dirname,
-    sourceType: 'module',
-  },
   ignorePatterns: [],
 };

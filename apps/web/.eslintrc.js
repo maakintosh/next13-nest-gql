@@ -8,16 +8,15 @@ module.exports = {
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
     'react/jsx-key': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
   parserOptions: {
     babelOptions: {
       presets: [require.resolve('next/babel')],
     },
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
+    sourceType: 'module',
   },
   ignorePatterns: ['./node_modules', './.next/**', '.eslintrc.js'],
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
 };
