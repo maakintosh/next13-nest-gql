@@ -8,7 +8,7 @@ export default function Home() {
         <title>Web - Turborepo Example</title>
       </Head>
 
-      <main>
+      <main className="mx-2 my-4">
         <h1>next.js!</h1>
         <Button />
       </main>
