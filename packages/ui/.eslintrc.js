@@ -5,23 +5,18 @@ module.exports = {
   root: true,
   extends: [
     'custom',
-    'next/core-web-vitals',
     'plugin:react/recommended',
     'plugin:tailwindcss/recommended',
   ],
   plugins: ['react', 'tailwindcss'],
   rules: {
-    '@next/next/no-html-link-for-pages': 'off',
     'react/jsx-key': 'off',
     'react/react-in-jsx-scope': 'off',
   },
   parserOptions: {
-    babelOptions: {
-      presets: [require.resolve('next/babel')],
-    },
     project: './tsconfig.json',
     tsconfigRootDir: __dirname,
     sourceType: 'module',
   },
-  ignorePatterns: ['./node_modules', './.next/**', '.eslintrc.js'],
+  ignorePatterns: ['./node_modules', './dist', '.eslintrc.js'],
 };

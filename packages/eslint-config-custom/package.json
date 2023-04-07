@@ -9,9 +9,11 @@
     "eslint-config-next": "latest",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-turbo": "latest",
+    "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "7.28.0",
-    "eslint-plugin-simple-import-sort": "^10.0.0"
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-tailwindcss": "^3.11.0"
   },
   "publishConfig": {
     "access": "public"
