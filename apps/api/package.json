@@ -14,6 +14,11 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "db:generate": "pnpm dlx prisma generate",
+    "db:push": "pnpm dlx prisma db push",
+    "db:migrate:dev": "pnpm dlx prisma migrate dev",
+    "db:seed": "pnpm dlx prisma db seed",
+    "db:studio": "pnpm dlx prisma studio",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
@@ -50,7 +55,8 @@
     "typescript": "^4.9.4"
   },
   "prisma": {
-    "schema": "./prisma/schema.prisma"
+    "schema": "./prisma/schema.prisma",
+    "seed": "ts-node --transpile-only ./prisma/seed.ts"
   },
   "jest": {
     "moduleFileExtensions": [
