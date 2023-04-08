@@ -12,6 +12,14 @@
       "cache": false,
       "persistent": true
     },
+    "db:generage": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false
+    },
+    "db:migrate:dev": {},
+    "db:seed": {},
     "clean": {
       "cache": false
     }
