@@ -5,33 +5,59 @@ generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+generator nestgraphql {
+  provider                = "node node_modules/prisma-nestjs-graphql"
+  // detailed options → https://www.npmjs.com/package/prisma-nestjs-graphql?activeTab=readme
+  output                  = "../src/@generated/"
+  combineScalarFilters    = true
+  emitSingle              = true
+  // field validator
+  fields_Validator_input  = true
+  fields_Validator_output = true
+  fields_Validator_model  = true
+  fields_Validator_from   = "class-validator"
+  // Args where|data nested validator
+  decorate_1_type         = "*Args"
+  decorate_1_field        = "@(data|where)"
+  decorate_1_name         = ValidateNested
+  decorate_1_from         = "class-validator"
+  decorate_1_arguments    = "[]"
 }
 
 generator erd {
   provider                  = "prisma-erd-generator"
   output                    = "./ERD.svg"
-  theme                     = "dark"
+  theme                     = "forest"
   mmdcPath                  = "node_modules/.bin"
   includeRelationFromFields = true
 }
 
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String
-  posts     Post[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id    String @id @default(cuid())
+  ///@Validator.IsEmail()
+  email String @unique
+  ///@Validator.IsString()
+  ///@Validator.MaxLength(30)
+  name  String
+  posts Post[]
 }
 
 model Post {
   id        String   @id @default(cuid())
+  ///@Validator.IsString()
   title     String
+  ///@Validator.IsString()
   content   String
-  published Boolean? @default(false)
-  user      User?    @relation(fields: [userId], references: [id])
-  userId    String?
+  ///@Validator.IsBoolean()
+  published Boolean  @default(false)
+  user      User     @relation(fields: [userId], references: [id])
+  ///@Validator.IsString()
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

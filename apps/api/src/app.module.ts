@@ -5,6 +5,7 @@ import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { join } from 'path';
 import { UsersModule } from './modules/users/users.module';
+import { PostsModule } from './modules/posts/posts.module';
 
 @Module({
   imports: [
@@ -12,11 +13,12 @@ import { UsersModule } from './modules/users/users.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      sortSchema: true,
+      sortSchema: false,
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
     UsersModule,
+    PostsModule,
   ],
   controllers: [],
   providers: [],
