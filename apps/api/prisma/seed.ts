@@ -3,6 +3,11 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
+  console.log('delete existing data...');
+  await prisma.post.deleteMany();
+  await prisma.user.deleteMany();
+
+  console.log('create new data...');
   const alice = await prisma.user.upsert({
     where: { email: 'alice@prisma.io' },
     update: {},

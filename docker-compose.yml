@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3.9'
 
 volumes:
   db-data:
@@ -7,10 +7,13 @@ services:
   db:
     image: postgres:14
     container_name: db
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - db-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      - '5432:5432'
