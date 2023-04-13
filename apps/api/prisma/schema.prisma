@@ -6,11 +6,18 @@ generator client {
 }
 
 generator nestgraphql {
-  provider                = "node node_modules/prisma-nestjs-graphql"
-  // detailed options → https://www.npmjs.com/package/prisma-nestjs-graphql?activeTab=readme
-  output                  = "../src/@generated/"
-  combineScalarFilters    = true
-  emitSingle              = true
+  provider                              = "node node_modules/prisma-nestjs-graphql"
+  // detailed options → https://github.com/unlight/prisma-nestjs-graphql
+  output                                = "../src/@generated/prisma-nestjs-graphql"
+  purgeOutput                           = true
+  // falsing this option resolved errors that index.ts file hadn't generated Int / Float Filter classes
+  combineScalarFilters                  = false
+  emitSingle                            = true
+  // removes input types for atomic operations
+  noAtomicOperations                    = true
+  // enabling this will break compatiblity between Prisma types and generated classes.
+  requireSingleFieldsInWhereUniqueInput = true
+
   // field validator
   fields_Validator_input  = true
   fields_Validator_output = true
@@ -38,13 +45,15 @@ datasource db {
 }
 
 model User {
-  id    String @id @default(cuid())
+  id        String   @id @default(cuid())
   ///@Validator.IsEmail()
-  email String @unique
+  email     String   @unique
   ///@Validator.IsString()
-  ///@Validator.MaxLength(30)
-  name  String
-  posts Post[]
+  ///@Validator.MaxLength(15)
+  name      String
+  posts     Post[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Post {
@@ -55,8 +64,7 @@ model Post {
   content   String
   ///@Validator.IsBoolean()
   published Boolean  @default(false)
-  user      User     @relation(fields: [userId], references: [id])
-  ///@Validator.IsString()
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

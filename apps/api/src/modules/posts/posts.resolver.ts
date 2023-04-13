@@ -6,7 +6,7 @@ import {
   FindUniquePostArgs,
   Post,
   UpdateOnePostArgs,
-} from '../../@generated';
+} from '../../@generated/prisma-nestjs-graphql';
 
 @Resolver(() => Post)
 export class PostsResolver {

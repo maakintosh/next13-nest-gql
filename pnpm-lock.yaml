@@ -49,6 +49,9 @@ importers:
       graphql:
         specifier: ^16.6.0
         version: 16.6.0
+      prisma-graphql-type-decimal:
+        specifier: ^3.0.0
+        version: 3.0.0(@prisma/client@4.12.0)(graphql@16.6.0)
       reflect-metadata:
         specifier: ^0.1.13
         version: 0.1.13
@@ -6853,6 +6856,16 @@ packages:
       '@prisma/generator-helper': 4.12.0
       dotenv: 16.0.3
     dev: true
+
+  /prisma-graphql-type-decimal@3.0.0(@prisma/client@4.12.0)(graphql@16.6.0):
+    resolution: {integrity: sha512-jrALv8ShVZoBBNyIOBCxwRoLM/DAOSD/OBKTWeJa9UigQXUTZniNXvLd4fLXwm+3v00A7cOZ1fFh3b74Ndgxhw==}
+    peerDependencies:
+      '@prisma/client': '>=4.12 <=5'
+      graphql: '16'
+    dependencies:
+      '@prisma/client': 4.12.0(prisma@4.12.0)
+      graphql: 16.6.0
+    dev: false
 
   /prisma-nestjs-graphql@18.0.0:
     resolution: {integrity: sha512-7c38NhBdXxSUflHTIIt6ndzeYZQrSIpAclrxsswpO9+gqKH68V/9fZqBBGQlAzHkU+Tn0Uwmw89M9vVbIrV2aA==}

@@ -6,7 +6,7 @@ import {
   FindUniqueUserArgs,
   UpdateOneUserArgs,
   User,
-} from '../../@generated';
+} from '../../@generated/prisma-nestjs-graphql';
 
 @Resolver(() => User)
 export class UsersResolver {
